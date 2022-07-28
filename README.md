@@ -1,1 +1,1 @@
-# a_rec_test
+# OpSIM: Optical Simulation Library
