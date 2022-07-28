@@ -17,17 +17,17 @@ def package_files(directory):
     return paths
 
 
-resource_files = package_files('opsim/resources')
+resource_files = package_files('camera_simulator/resources')
 
 setup(
-    name='opsim',
+    name='camera_simulator',
     version='0.1.0',
-    description='Optical Simulation by Juan',
+    description='Camera Simulator by Juan',
     long_description=readme,
     author='Juan Pablo Salamanca Ramirez',
     author_email='juan.salamanca.r@icloud.com',
     url='https://github.com/jpsalamarcara/a_rec_test',
-    packages=find_packages(exclude=('tests',)),
+    packages=find_packages(exclude=('tests','docs')),
     install_requires=REQUIRED,
     package_data={'': resource_files},
     include_package_data=True

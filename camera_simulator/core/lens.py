@@ -1,7 +1,7 @@
 import numpy as np
 
-from opsim.core.common import check_valid_image
-from opsim.core.processor import BaseProcessor
+from camera_simulator.core.common import check_valid_image
+from camera_simulator.core.processor import BaseProcessor
 
 
 class Lens(BaseProcessor):
