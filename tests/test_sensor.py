@@ -10,7 +10,8 @@ def instance() -> Sensor:
 
 
 def test_process(instance: Sensor):
-    valid_image = (np.random.random(size=(10, 20)) * 255).astype('uint8')
+    size = (1080, 1920)  # This size is defined by default in Lens decorator
+    valid_image = (np.random.random(size=size) * 255).astype('uint8')
     output_image = instance.process(image=valid_image)
     assert np.array_equal(2*valid_image, output_image), 'images are equal'
 

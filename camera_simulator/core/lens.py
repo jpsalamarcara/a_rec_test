@@ -42,3 +42,14 @@ class Lens(BaseProcessor):
         if (h, w) != (self.height, self.width):
             raise ValueError('(height, width) does not match with expected values')
         return image
+
+    def __call__(self, *args, **kwargs):
+        if len(args) == 1:
+            function = args[0]
+            assert function is not None, 'function must have a value'
+            assert callable(function), 'function must be a callable'
+
+            def wrapper(*args, **kwargs):
+                img = function(*args, **kwargs)
+                return self.process(img)
+            return wrapper
