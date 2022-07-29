@@ -1,6 +1,6 @@
-from setuptools import setup, find_packages
 import os
 
+from setuptools import setup, find_packages
 
 with open('requirements.txt') as f:
     REQUIRED = f.read().split('\n')
@@ -27,8 +27,13 @@ setup(
     author='Juan Pablo Salamanca Ramirez',
     author_email='juan.salamanca.r@icloud.com',
     url='https://github.com/jpsalamarcara/a_rec_test',
-    packages=find_packages(exclude=('tests','docs')),
+    packages=find_packages(exclude=('tests', 'docs')),
     install_requires=REQUIRED,
     package_data={'': resource_files},
-    include_package_data=True
+    include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'pysensor=camera_simulator.core.commands.mymean.execute'
+        ]
+    },
 )
