@@ -4,7 +4,7 @@ import pytest
 from camera_simulator.core.sensor import Sensor
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='module')
 def instance() -> Sensor:
     return Sensor(gain=2, enable=True)
 
@@ -36,3 +36,11 @@ def test_getters_setters(instance: Sensor):
     assert instance.gain == 2
     instance.gain = 1
     assert instance.gain == 1
+
+
+def test_iterator(instance: Sensor):
+    output = [x for x in instance]
+    assert len(output) == 10
+    indexes = [x[1] for x in output]
+    assert min(indexes) == 0
+    assert max(indexes) == 9

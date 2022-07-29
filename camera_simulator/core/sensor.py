@@ -14,6 +14,7 @@ class Sensor(BaseProcessor):
     def __init__(self, gain: int, **kwargs):
         super().__init__(**kwargs)
         self._gain = gain
+        self._last_image = None
 
     @property
     def gain(self) -> int:
@@ -31,4 +32,16 @@ class Sensor(BaseProcessor):
         :return: numpy.ndarray
         """
         check_valid_image(image)
+        self._last_image = image
         return self.gain * image
+
+    def __iter__(self):
+        self.iteration = 0
+        return self
+
+    def __next__(self):
+        if self.iteration < 10:
+            self.iteration += 1
+            return self._last_image, self.iteration - 1
+        else:
+            raise StopIteration
