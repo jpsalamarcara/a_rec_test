@@ -33,7 +33,7 @@ setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'pysensor=camera_simulator.core.commands.mymean.execute'
+            'pysensor=camera_simulator.core.commands.mymean:execute'
         ]
     },
 )
