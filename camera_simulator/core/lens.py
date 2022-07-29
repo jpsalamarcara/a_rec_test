@@ -49,7 +49,7 @@ class Lens(BaseProcessor):
             assert function is not None, 'function must have a value'
             assert callable(function), 'function must be a callable'
 
-            def wrapper(*args, **kwargs):
-                img = function(*args, **kwargs)
+            def wrapper(*n_args, **n_kwargs):
+                img = function(*n_args, **n_kwargs)
                 return self.process(img)
             return wrapper
